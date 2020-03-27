@@ -1,0 +1,39 @@
+# Téléchargement du modèle spaCy dans le terminal via le code suivant:
+
+	!python -m spacy download fr # modèle français
+	
+# Importation de la librarie spaCy et création du "language processing pipeline" :
+	
+	Import spacy 
+	nlp_fr = spacy.load("fr") #Pour le modèle français
+
+# Input du fichier corpus
+# lecture d'un fichier externe
+	print ("\nEntrez le nom du fichier que vous souhaitez traiter : ")
+	nom_de_fichier = input()
+	texte = open(nom_de_fichier, "r")
+	content = texte.read()
+	
+Transformation de texte
+Segmentation de texte en phrases
+
+# Avec spaCy 
+# Passage du texte du corpus par le pipeline
+	phrases = nlp(content)
+
+Segmentation de texte en tokens, lemmatisation, étiquetage en POS et analyse en dépendances
+
+La segmentation peut être réalisée de façon plus fine, en tokens. Un token peut correspondre à un mot, un N-gramme, un chiffre ou une ponctuation.
+
+# Passage du texte par le pipeline
+	mots = nlp(content)
+# Tokenization, lemmatisation, étiquetage de la phrase et affichage du résultat
+	for token in mots:
+    print("{0}\t{1}\t{2}\t{3}\t{4}".format(
+      token.text,
+      token.lemma_,
+      token.pos_,
+      token.tag_,
+      token.dep_,
+    ))
+
